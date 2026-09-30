@@ -81,6 +81,24 @@
           "description": "Vehicle VIN (if not provided then default polling interval will be updated)"
         }
       }
+    },
+    "driving_interval": {
+      "name": "Set Driving Polling Interval",
+      "description": "Set how often a car is polled while it is driving (in gear). The integration's update loop runs every 10 seconds, so values below 10 behave as 10.",
+      "fields": {
+        "driving_interval": {
+          "name": "Interval (seconds)",
+          "description": "Seconds between polls while driving (1-3600). Use -1 to reset to the default (60)."
+        },
+        "email": {
+          "name": "Email address",
+          "description": "Email address (optional if only one account)"
+        },
+        "vin": {
+          "name": "Vehicle VIN",
+          "description": "Vehicle VIN (if not provided then the default driving interval for all cars is updated)"
+        }
+      }
     }
   },
   "entity": {

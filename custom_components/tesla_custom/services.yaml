@@ -62,3 +62,34 @@ polling_interval:
           max: 3600
           step: 30
           unit_of_measurement: "s"
+
+driving_interval:
+  name: Set Driving Polling Interval
+  description: Set how often a car is polled while it is driving (in gear). The integration's update loop runs every 10 seconds, so values below 10 behave as 10.
+  fields:
+    email:
+      # Description of the field
+      description: Email address (optional if only one account)
+      # Example value that can be passed for this field
+      example: "elon@tesla.com"
+      required: false
+      selector:
+        text:
+    vin:
+      # Description of the field
+      description: Vehicle VIN (if not provided then the default driving interval for all cars is updated)
+      # Example value that can be passed for this field
+      example: "5YJSA11111111111"
+      required: false
+      selector:
+        text:
+    driving_interval:
+      description: Seconds between polls while driving (1-3600). Use -1 to reset to the default (60).
+      example: 60
+      required: true
+      selector:
+        number:
+          min: -1
+          max: 3600
+          step: 1
+          unit_of_measurement: "s"
