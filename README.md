@@ -89,6 +89,7 @@ Here are some things to consider and understand when implementing the Tesla comp
 - The car will, however, be woken up when a command is actively sent to the car, such as door unlock or turning on the HVAC. It will then also fetch updated information while the car is awake based on the `polling_interval`.
 - The car can intentionally be woken up to fetch recent information by sending a harmless command, for example, a lock command. This can be used in an automation to, for example, ensure that updated information is available every morning. (Note that the command must be valid for that specific car model. So locking the frunk of a Model 3 will not wake up that car).
 - You can also toggle the `polling switch` on/off to disable polling of the vehicle completely via automations or the Lovelace UI.
+- While a car is driving (in gear) it is polled every 60 seconds regardless of the `polling_interval`. The `tesla_custom.driving_interval` service changes this per VIN (or for all cars when no VIN is given; `-1` resets to the default). The integration's update loop runs every 10 seconds, so shorter values behave as 10. This is useful for automations that need fresher location data on approach, e.g. opening a garage door.
 
 ## Contributions are welcome!
 
